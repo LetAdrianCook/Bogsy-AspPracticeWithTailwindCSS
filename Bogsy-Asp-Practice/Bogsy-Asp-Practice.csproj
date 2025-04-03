@@ -6,6 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Bogsy_Asp_Practice</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 	
 	<ItemGroup>
 		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
@@ -13,7 +22,7 @@
 	</ItemGroup>
 
 	<Target Name="Tailwind" BeforeTargets="Build">
-		<Exec Command="npm run css:build"/>
+		<Exec Command="npm run css:build" />
 	</Target>
 
 </Project>

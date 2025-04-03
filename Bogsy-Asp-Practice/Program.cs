@@ -1,7 +1,17 @@
+using Bogsy_Asp_Practice.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//Add database connection
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection"); //From appsettings.json tung gi buhat nto na connection string
+    options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
