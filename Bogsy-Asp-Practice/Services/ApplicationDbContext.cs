@@ -1,13 +1,33 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Bogsy_Asp_Practice.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bogsy_Asp_Practice.Services
 {
-    public class ApplicationDbContext : IdentityDbContext //make sure naay using Microsoft Entity Framecore
+    //use the created user model applicationuser
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser> //make sure naay using Microsoft Entity Framecore
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
-        }     
+        }
+
+        //Creating Roles
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            var admin = new IdentityRole("admin");
+            admin.NormalizedName = "admin";
+            
+            var client = new IdentityRole("client");
+            client.NormalizedName = "client";
+            
+            var seller = new IdentityRole("seller");
+            seller.NormalizedName = "seller";
+
+            builder.Entity<IdentityRole>().HasData(admin, client, seller);
+        }
     }
 }

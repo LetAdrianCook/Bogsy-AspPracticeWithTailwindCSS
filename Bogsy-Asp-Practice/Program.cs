@@ -1,5 +1,7 @@
 using Bogsy_Asp_Practice.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Bogsy_Asp_Practice.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection"); //From appsettings.json tung gi buhat nto na connection string
     options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 

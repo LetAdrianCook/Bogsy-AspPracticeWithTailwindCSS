@@ -1,0 +1,74 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="flex min-h-screen items-center justify-center">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2 class="mb-6 text-2xl font-semibold">Create a new account.</h2>
+            <hr class="mb-6" />
+            <div asp-validation-summary="ModelOnly" class="mb-4 text-red-600" role="alert"></div>
+
+             <!-- Fname -->
+            <div class="mb-4">
+                <label for="Input_FirstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                <input asp-for="Input.FirstName" id="Input_FirstName" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username" placeholder="John" />
+                <span asp-validation-for="Input.FirstName" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+             <!-- Lname -->
+            <div class="mb-4">
+                <label for="Input_LastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                <input asp-for="Input.LastName" id="Input_LastName" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username" placeholder="Doe" />
+                <span asp-validation-for="Input.LastName" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+             <!-- Email -->
+            <div class="mb-4">
+                <label for="Input_Email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input asp-for="Input.Email" id="Input_Email" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+             <!-- Phone -->
+            <div class="mb-4">
+                <label for="Input_PhoneNumber" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input asp-for="Input.PhoneNumber" id="Input_PhoneNumber" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username" />
+                <span asp-validation-for="Input.PhoneNumber" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+             <!-- Address -->
+            <div class="mb-4">
+                <label for="Input_Address" class="block text-sm font-medium text-gray-700">Address</label>
+                <input asp-for="Input.Address" id="Input_Address" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username"  />
+                <span asp-validation-for="Input.Address" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <label for="Input_Password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input asp-for="Input.Password" id="Input_Password" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="new-password" placeholder="password" />
+                <span asp-validation-for="Input.Password" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4">
+                <label for="Input_ConfirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" id="Input_ConfirmPassword" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="new-password" placeholder="password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="mt-1 text-sm text-red-600"></span>
+            </div>
+
+            <!-- Register Button -->
+            <div>
+                <button id="registerSubmit" type="submit" class="w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+}

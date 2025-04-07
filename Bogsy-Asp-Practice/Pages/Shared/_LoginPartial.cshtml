@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Bogsy_Asp_Practice.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="relative flex items-center space-x-4">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="text-gray-700">
+            Hello, @UserManager.GetUserName(User)
+        </li>
+
+        <li class="relative">
+            <!-- Checkbox toggle for dropdown -->
+            <input type="checkbox" id="userMenuToggle" class="peer hidden" />
+
+            <!-- Icon button -->
+            <label for="userMenuToggle" class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200">
+                <i class="ph ph-user-circle text-xl text-gray-700"></i>
+            </label>
+
+            <!-- Dropdown -->
+            <ul class="invisible absolute right-0 z-50 mt-2 w-40 rounded-lg border border-gray-200 bg-white opacity-0 shadow-lg transition-opacity duration-150 peer-checked:opacity-100 peer-checked:visible">
+                <li>
+                    <a class="block rounded-t-lg px-4 py-2 text-gray-700 hover:bg-gray-200"
+                       asp-area="Identity" asp-page="/Account/Manage/Index">
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <form method="post" asp-area="Identity" asp-page="/Account/Logout"
+                          asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                        <button type="submit" class="w-full rounded-b-lg px-4 py-2 text-left text-gray-700 hover:bg-gray-200">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li>
+                <a class="text-white transition hover:text-[#D29F80]" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li>
+                <a class="text-white transition hover:text-[#D29F80]" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>

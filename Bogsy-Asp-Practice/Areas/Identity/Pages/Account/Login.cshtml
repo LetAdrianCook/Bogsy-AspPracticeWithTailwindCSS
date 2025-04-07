@@ -1,0 +1,59 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="flex min-h-screen items-center justify-center">
+    <div class="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+        <section>
+            <form id="account" method="post">
+                <h2 class="mb-6 text-2xl font-semibold">Bogsy Log In</h2>
+                <hr class="mb-6" />
+                <div asp-validation-summary="ModelOnly" class="mb-4 text-red-600" role="alert"></div>
+
+                <!-- Email -->
+                <div class="mb-4">
+                    <label for="Input_Email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input asp-for="Input.Email" id="Input_Email" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="username" placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email" class="mt-1 text-sm text-red-600"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                    <label for="Input_Password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input asp-for="Input.Password" id="Input_Password" class="mt-2 w-full rounded-md border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-500" autocomplete="current-password" placeholder="password" />
+                    <span asp-validation-for="Input.Password" class="mt-1 text-sm text-red-600"></span>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="mb-4 flex items-center">
+                    <input asp-for="Input.RememberMe" id="Input_RememberMe" class="mr-2 leading-tight" type="checkbox" />
+                    <label for="Input_RememberMe" class="text-sm text-gray-700">Remember Me</label>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Log in</button>
+                </div>
+
+                <!-- Forgot Password & Links -->
+                <div class="mt-4 text-center">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword" class="text-blue-500 hover:underline">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-blue-500 hover:underline">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="text-blue-500 hover:underline">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+
+  
+</div>
+
